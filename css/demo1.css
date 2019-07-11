@@ -1,0 +1,112 @@
+#mycss3 {
+  margin: 200px;
+}
+.cube-wrap {
+  width: 200px;
+  height: 50px;
+  margin: auto;
+  /* perspective: 800px;
+  perspective-origin: 50% 100px; */
+}
+.cube{
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  animation: cube-spin 5s infinite linear;
+}
+.cube:hover div {
+  box-shadow: 0 0 30px teal;
+  cursor: pointer;
+}
+.cube div {
+  position: absolute;
+  width: 200px;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  box-shadow: inset 0 0 30px rgba(125,125,125,0.8);
+  font-size: 20px;
+  text-align: center;
+  color: rgba(0,0,0,0.5);
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+.depth div.front-pane {
+  transform: translateZ(100px);
+  /* height: 100px; */
+}
+.depth div.back-pane {
+  transform: translateZ(-100px) rotateY(180deg);
+}
+.depth div.left-pane {
+  transform:rotateY(270deg) translateX(-100px);
+  transform-origin: center left;
+}
+.depth div.right-pane {
+  transform:rotateY(-270deg) translateX(100px);
+  transform-origin: top right;
+}
+.depth div.top-pane {
+  transform:rotateX(-90deg) translateY(-100px);
+  transform-origin: top center;
+}
+.depth div.bottom-pane {
+  transform:rotateX(90deg) translateY(100px);
+  transform-origin: bottom center;
+}
+@keyframes cube-spin {
+  from { transform: rotateY(0); }
+  to { transform: rotateY(360deg); }
+}
+/* 灯 */
+.light {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  animation: light .8s linear infinite;
+  margin: -30px auto 0;
+}
+@keyframes light {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1.3)
+  }
+}
+table {
+  border-collapse: collapse;
+  width: 200px;
+  height: 200px;
+  margin-top: -50%;
+  text-align: center;
+  transform: translate(0) rotate(0) scale(0);
+  transition: all 3s;  
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #333333b8, inset 2px 2px 20px #3333339e;
+  overflow: hidden;
+}
+table.show{
+  transform: translate(400px) rotate(360deg) scale(1);
+}
+td {
+  box-shadow: 0 0 1px #bbb;
+  transition: all .5s;
+}
+td:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px #3e3e3e;
+}
+.warning {
+  color: red;
+}
+@keyframes table {
+  from{
+    transform: translateX(0)
+  }
+  to{
+    transform: translateX(300px)
+  }
+}
